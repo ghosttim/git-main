@@ -1,25 +1,7 @@
-var http = require('http');
+var request = require('request');
 
-var options = {
-    hostname:'www.google.ru',
-    port: 80,
-    path: '/upload',
-    mathod: 'POST'
-};
-
-var req = http.request(options, function(res){
-	console.log('STATUS: '+res.statusCode);
-	console.log('HEADERS: '+JSON.stringify(res.headers));
-	res.setEncoding('utf8');
-	res.on('data',function(chunk){
-		console.log('BODY: '+chunk);
-	});
+request('http://www.google.com', function(error, response, body) {
+	if(!error && response.statusCode == 200) {
+		console.log(body); // Print the google web page.
+	}
 });
-
-req.on('error', function(e){
-	console.log('problem with request: '+e.message);
-});
-
-req.write('data\n');
-req.write('date\n');
-req.end();
