@@ -1,7 +1,7 @@
 var http = require('http');
 
 var options = {
-    hostname:'www.google.com',
+    hostname:'www.google.ru',
     port: 80,
     path: '/upload',
     mathod: 'POST'
