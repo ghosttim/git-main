@@ -1,14 +1,10 @@
-var request = require('request');
+var http = require("http");
 
-request({
-	method: 'POST',
-	uri: 'http://google.com',
-	form: {key: 'value'},
-}, function(error, response, body){
-	if (error) {
-		console.error(error);
-	}else{
-		console.log(body);
-		console.log(response.statusCode);
-	}
-});
+function onRequest(request, response) {
+	 response.writeHead(200,{"Content-Type":"text/plain"});
+	 response.write("Hello World");
+	 response.end();
+}
+
+http.createServer(onRequest).listen(8888);
+console.log("Server has started");
